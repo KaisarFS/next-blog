@@ -2,7 +2,7 @@
 "use client"
 import Link from "next/link";
 import styles from "./detail.module.css";
-import { useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import axios from "axios";
 import { useQuery } from "react-query";
 // import Navbar from '../../../components/Navbar'
@@ -17,11 +17,6 @@ const fetchComments = async (id) => {
   const res = await axios.get(`https://gorest.co.in/public-api/posts/${id}/comments`);
   return res.data.data;
 };
-
-// const fetchUser = async (id) => {
-//   const res = await axios.get(`https://gorest.co.in/public-api/users/${id}`);
-//   return res.data.data;
-// };
 
 export default function PostDetails({ params }) {
   const id = params.id;
@@ -44,20 +39,6 @@ export default function PostDetails({ params }) {
   if (comments === null) {
     return <p>Error!</p>;
   }
-
-
-  // const id = params.id;
-
-  // const { data: post, isLoading: postLoading, isError: postError } = useQuery(['post', id], () => fetchPost(id));
-  // const { data: comments, isLoading: commentsLoading, isError: commentsError } = useQuery(['comments', id], () => fetchComments(id));
-
-  // if (postLoading || commentsLoading) {
-  //   return <p>Loading...</p>;
-  // }
-
-  // if (postError || commentsError) {
-  //   return <p>Error!</p>;
-  // }
 
 
   return (
@@ -117,35 +98,10 @@ export default function PostDetails({ params }) {
               </div>
 
 
-
-              {/* <div className={styles['quote']}>
-                <p> <font className={styles['letter']}>“</font>
-                  Nothing could be worse than the fear that one had given up too soon, and left one unexpended effort that might have saved the world.
-                </p>
-                <p className={styles['author']}>Jane Addams</p>
-              </div>
-              <div className={styles['words']}>
-                <p><font className={styles['letter']}>S</font>
-                  Sit amet, consectetur adipisicing elit. Rem dolorem possimus delectus officia aspernatur rerum repellendus quos necessitatibus sed! Deserunt dolor maxime accusantium, vero nostrum ipsam iure hic repellendus, eum numquam fugiat quo fuga ducimus minima veritatis. Deserunt dolor maxime accusantium, vero nostrum ipsam iure hic repellendus, eum numquam fugiat quo fuga ducimus minima veritatis. Dolor sit amet, consectetur adipisicing elit. Rem dolorem possimus delectus officia aspernatur rerum repellendus quos necessitatibus sed! Deserunt dolor maxime accusantium,</p>
-                <div className={styles['buttons']}>
-                  <div><svg viewBox="0 0 24 24" width={24} height={24} stroke="currentColor" strokeWidth={2} fill="none" strokeLinecap="round" strokeLinejoin="round" className={styles['poster-button']}><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" /></svg></div>
-                  <div><svg viewBox="0 0 24 24" width={24} height={24} stroke="currentColor" strokeWidth={2} fill="none" strokeLinecap="round" strokeLinejoin="round" className={styles['poster-button']}><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" /></svg></div>
-                </div>
-              </div>
-              <div className={styles['author']}>
-                <div className={styles['image']} />
-              </div> */}
-
             </div>
           </div>
           <div className={styles['footer']}>
             <div className={styles['content']}>
-              {/* <div>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate, laboriosam sunt eveniet eius iure, sapiente in maiores quasi saepe quas quisquam obcaecati odio exercitationem rerum, molestias aliquid ipsa excepturi laborum quaerat! Tempora necessitatibus
-              </div>
-              <div>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate, laboriosam sunt eveniet eius iure, sapiente in maiores quasi saepe quas quisquam obcaecati odio exercitationem rerum, molestias aliquid ipsa excepturi laborum quaerat! Tempora necessitatibus
-              </div> */}
               <div className={styles['comments']}>
                 <h2>Comments</h2>
                 {comments.length === 0 ? (
@@ -169,65 +125,12 @@ export default function PostDetails({ params }) {
                     </div>
                   ))
                 )}
-
-                {/* {comments.map(comment => (
-                  <div className={styles['comment-wrap']} key={comment.id}>
-                    <div className={styles['comment-block']}>
-                      <div className={styles['comment-tile']}>{comment.name}</div>
-                      <p className={styles['comment-text']}>{comment.body}</p>
-                      <div className={styles['bottom-comment']}>
-                        <div className={styles['comment-date']}>Feb 11, 2024 @ 10:32 AM</div>
-
-                      </div>
-                    </div>
-                  </div>
-                ))} */}
-
-
-                {/* <div className={styles['comment-wrap']}>
-                  <div className={styles.photo}>
-                    <div className={styles.avatar} style={{ backgroundImage: 'url("https://cdn.discordapp.com/attachments/1096243658086432858/1204285792483156038/rn_image_picker_lib_temp_2328c1d6-0e5f-40d7-810d-f4635c37369b.jpg?ex=65d42d8b&is=65c1b88b&hm=703a4441ddd39f10c5e6ac71cc61de4936ecfe923f7a2c3db5abfe15f35c79ff&")' }} />
-                  </div>
-                  <div className={styles['comment-block']}>
-                    <div className={styles['comment-tile']}>Sylvester Stalon</div>
-                    <p className={styles['comment-text']}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto temporibus iste nostrum dolorem natus recusandae incidunt voluptatum. Eligendi voluptatum ducimus architecto tempore, quaerat explicabo veniam fuga corporis totam.</p>
-                    <div className={styles['bottom-comment']}>
-                      <div className={styles['comment-date']}>Feb 11, 2024 @ 10:32 AM</div>
-                      <div className={styles['comment-actions']}>
-                        <div><svg viewBox="0 0 24 24" width={24} height={24} stroke="currentColor" strokeWidth={2} fill="none" strokeLinecap="round" strokeLinejoin="round" className={styles['poster-button']}><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" /></svg></div>
-                        <div><svg viewBox="0 0 24 24" width={24} height={24} stroke="currentColor" strokeWidth={2} fill="none" strokeLinecap="round" strokeLinejoin="round" className={styles['poster-button']}><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" /></svg></div>
-                        <div><svg viewBox="0 0 24 24" width={24} height={24} stroke="currentColor" strokeWidth={2} fill="none" strokeLinecap="round" strokeLinejoin="round" className={styles['poster-button']}><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" /></svg></div>
-                      </div>
-                    </div>
-                  </div>
-                </div> */}
-
-                
               </div>
             </div>
           </div>
         </div>
-
       </section>
-      {/* <footer>
-        <div className={styles['footer-logo']}>
-          <a href="#!"><img src="https://rvs-yelpcamp.vercel.app/Assets/Logo.svg" alt="" /></a>
-          <p>Created by - <a href="https://github.com/vetrisuriya"><span>KaisarFS</span></a></p>
-        </div>
-      </footer> */}
     </main>
   );
 }
 
-
-// const queryClient = new QueryClient();
-
-// const App = () => {
-//   return (
-//     <QueryClientProvider client={queryClient}>
-//       <PostList />
-//     </QueryClientProvider>
-//   );
-// };
-
-// export default App;
